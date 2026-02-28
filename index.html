@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dance for Democracy – Seattle, May 16, 2026</title>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --magenta: #E8006F;
+      --hot-pink: #FF3FA4;
+      --yellow: #FFD600;
+      --orange: #FF6B00;
+      --blue: #1A8FFF;
+      --blue-light: #5BB8FF;
+      --green: #00C46A;
+      --green-light: #4DFFAA;
+      --purple-dark: #3B0066;
+      --purple-mid: #6A0DAD;
+      --bg-grad-start: #4A0080;
+      --bg-grad-end: #FF6B00;
+      --text: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: linear-gradient(135deg, var(--bg-grad-start) 0%, #8B0080 35%, #CC3300 70%, var(--bg-grad-end) 100%);
+      background-attachment: fixed;
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ——— Top nav ——— */
+    .top-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.5rem;
+      background: rgba(20, 0, 40, 0.7);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      color: var(--yellow);
+      text-decoration: none;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .nav-link {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: rgba(255,255,255,0.7);
+      transition: color 0.2s;
+    }
+    .nav-link:hover { color: white; }
+    .nav-link-faq {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--green-light);
+      border: 1px solid var(--green);
+      background: rgba(0,196,106,0.12);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .nav-link-faq:hover {
+      background: rgba(0,196,106,0.25);
+      box-shadow: 0 0 12px rgba(0,196,106,0.4);
+    }
+
+    .badge-green { color: var(--green-light); border-color: var(--green); background: rgba(0,196,106,0.12); }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.4;
+    }
+
+    /* ——— Hero ——— */
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem 4rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 15% 20%, rgba(255,214,0,0.15) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 85% 80%, rgba(232,0,111,0.20) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 40% at 75% 10%, rgba(26,143,255,0.18) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 30% at 5% 60%, rgba(0,196,106,0.13) 0%, transparent 55%),
+        linear-gradient(135deg, #4A0080 0%, #8B0080 35%, #CC3300 70%, #FF6B00 100%);
+    }
+
+    /* Dot grid overlay */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    /* SVG dancer silhouettes strip */
+    .dancers-strip {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 180px;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Spinning vinyl record graphic */
+    .record-wrap {
+      position: absolute;
+      right: -120px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 480px;
+      height: 480px;
+      opacity: 0.15;
+    }
+    @media (max-width: 900px) { .record-wrap { display: none; } }
+
+    .record {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        #200 0deg, #400 10deg, #200 20deg, #400 30deg,
+        #200 40deg, #400 50deg, #200 60deg, #400 70deg,
+        #200 80deg, #400 90deg, #200 100deg, #400 110deg,
+        #200 120deg, #400 130deg, #200 140deg, #400 150deg,
+        #200 160deg, #400 170deg, #200 180deg, #400 190deg,
+        #200 200deg, #400 210deg, #200 220deg, #400 230deg,
+        #200 240deg, #400 250deg, #200 260deg, #400 270deg,
+        #200 280deg, #400 290deg, #200 300deg, #400 310deg,
+        #200 320deg, #400 330deg, #200 340deg, #400 350deg, #200 360deg
+      );
+      animation: spin 20s linear infinite;
+      box-shadow: 0 0 80px rgba(255,214,0,0.3), 0 0 160px rgba(232,0,111,0.2);
+    }
+
+    .record::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: 30%;
+      height: 30%;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--magenta) 0%, #6A0050 100%);
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Floating music notes */
+    .note {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0;
+      animation: floatNote 6s ease-in infinite;
+      pointer-events: none;
+      user-select: none;
+      color: var(--yellow);
+    }
+    @keyframes floatNote {
+      0%   { opacity: 0; transform: translateY(0) rotate(-10deg); }
+      20%  { opacity: 0.7; }
+      100% { opacity: 0; transform: translateY(-120px) rotate(20deg); }
+    }
+
+    /* ——— Typography ——— */
+    .font-bebas { font-family: 'Bebas Neue', sans-serif; }
+    .font-black { font-family: 'Black Han Sans', sans-serif; }
+    .font-mono  { font-family: 'Space Mono', monospace; }
+
+    .title-main {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(4.5rem, 14vw, 11rem);
+      line-height: 0.9;
+      letter-spacing: 0.02em;
+      color: #FFFFFF;
+      text-shadow: 4px 4px 0 rgba(0,0,0,0.4);
+    }
+
+    .title-sub {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.5rem, 7vw, 5.5rem);
+      line-height: 1;
+      letter-spacing: 0.04em;
+      color: var(--yellow);
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+    }
+
+    /* ——— Glowing badge ——— */
+    .badge {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      border: 1.5px solid;
+    }
+    .badge-yellow { color: var(--yellow); border-color: var(--yellow); background: rgba(255,214,0,0.15); }
+    .badge-pink   { color: var(--hot-pink); border-color: var(--hot-pink); background: rgba(255,63,164,0.15); }
+    .badge-white  { color: white; border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.1); }
+    .badge-blue   { color: var(--blue-light); border-color: var(--blue-light); background: rgba(91,184,255,0.15); }
+
+    /* ——— Countdown ——— */
+    .countdown-block {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      backdrop-filter: blur(10px);
+      padding: 1.2rem 1.5rem 1rem;
+      min-width: 80px;
+      text-align: center;
+    }
+    .countdown-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      line-height: 1;
+      color: var(--yellow);
+      text-shadow: 0 0 20px rgba(255,214,0,0.5);
+    }
+    .countdown-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-top: 0.25rem;
+    }
+
+    /* ——— Section cards ——— */
+    .card {
+      background: rgba(0,0,0,0.25);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .card:hover {
+      border-color: rgba(91,184,255,0.4);
+      transform: translateY(-3px);
+    }
+
+    /* ——— CTA Button ——— */
+    .btn-primary {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      padding: 1rem 2.5rem;
+      border-radius: 8px;
+      background: var(--yellow);
+      color: #3B0066;
+      text-decoration: none;
+      font-weight: 900;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 20px rgba(255,214,0,0.5), 4px 4px 0 rgba(0,0,0,0.4);
+    }
+    .btn-primary:hover {
+      transform: translate(-2px,-2px);
+      box-shadow: 0 0 40px rgba(255,214,0,0.7), 6px 6px 0 rgba(0,0,0,0.4);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 0.1em;
+      padding: 1rem 2.5rem;
+      border-radius: 8px;
+      background: var(--blue);
+      color: white;
+      text-decoration: none;
+      border: 2px solid var(--blue);
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 0 20px rgba(26,143,255,0.4), 4px 4px 0 rgba(0,0,0,0.4);
+    }
+    .btn-secondary:hover {
+      transform: translate(-2px,-2px);
+      box-shadow: 0 0 40px rgba(26,143,255,0.6), 6px 6px 0 rgba(0,0,0,0.4);
+    }
+
+    /* ——— DJ section ——— */
+    .dj-ring {
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      border: 3px solid var(--blue-light);
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 30px rgba(26,143,255,0.5), inset 0 0 20px rgba(26,143,255,0.1);
+      font-size: 5rem;
+      background: radial-gradient(circle, rgba(26,143,255,0.1) 0%, transparent 70%);
+      animation: pulse-blue 3s ease-in-out infinite;
+    }
+    @keyframes pulse-blue {
+      0%,100% { box-shadow: 0 0 20px rgba(26,143,255,0.4); }
+      50%      { box-shadow: 0 0 50px rgba(91,184,255,0.7); }
+    }
+
+    /* ——— Divider ——— */
+    .divider {
+      height: 3px;
+      background: linear-gradient(90deg, transparent, var(--green), var(--blue), var(--hot-pink), var(--yellow), var(--orange), transparent);
+      opacity: 0.6;
+      margin: 0;
+    }
+
+    /* ——— Stars / sparkle ——— */
+    .sparkle {
+      position: absolute;
+      width: 4px; height: 4px;
+      border-radius: 50%;
+      background: var(--yellow);
+      animation: twinkle 3s ease-in-out infinite;
+    }
+    @keyframes twinkle {
+      0%,100% { opacity: 0; transform: scale(0.5); }
+      50%      { opacity: 1; transform: scale(1.5); }
+    }
+
+    /* ——— Map link ——— */
+    .map-link {
+      color: var(--blue-light);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(91,184,255,0.4);
+      transition: border-color 0.2s;
+    }
+    .map-link:hover { border-color: var(--blue-light); }
+
+    /* ——— Section backgrounds ——— */
+    .section-dark {
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(4px);
+    }
+
+    /* ——— Footer ——— */
+    footer {
+      background: rgba(0,0,0,0.5);
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* ——— Scroll reveal ——— */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Marquee */
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      animation: marquee 18s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ——— Dancer silhouettes (SVG inline) ——— */
+    .dancers-svg {
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="#" class="nav-logo">Dance for Democracy '26</a>
+  <div class="nav-links">
+    <a href="#about" class="nav-link">About</a>
+    <a href="https://secure.actblue.com/donate/dancefordemocracy2026" target="_blank" rel="noopener" class="nav-link">Donate</a>
+    <a href="#faq" class="nav-link-faq">❓ FAQs</a>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" style="padding-top: 5rem;">
+  <div class="hero-bg"></div>
+
+  <!-- Spinning record -->
+  <div class="record-wrap">
+    <div class="record"></div>
+  </div>
+
+  <!-- Floating notes -->
+  <span class="note" style="left:8%; top:70%; animation-delay:0s;">♪</span>
+  <span class="note" style="left:15%; top:60%; animation-delay:1.2s;">♫</span>
+  <span class="note" style="left:5%; top:40%; animation-delay:2.5s;">♩</span>
+  <span class="note" style="left:88%; top:65%; animation-delay:0.7s; display:none;">♬</span>
+  <span class="note" style="left:75%; top:50%; animation-delay:1.8s;">♪</span>
+
+  <!-- Sparkles -->
+  <span class="sparkle" style="left:20%;top:15%;animation-delay:0s;"></span>
+  <span class="sparkle" style="left:70%;top:25%;animation-delay:1s;"></span>
+  <span class="sparkle" style="left:40%;top:80%;animation-delay:2s;"></span>
+  <span class="sparkle" style="left:85%;top:15%;animation-delay:0.5s;"></span>
+  <span class="sparkle" style="left:10%;top:85%;animation-delay:1.5s;"></span>
+
+
+  <div class="relative z-10 text-center max-w-4xl mx-auto" style="position:relative;z-index:10;">
+    <div class="flex flex-wrap justify-center gap-3 mb-6">
+      <span class="badge badge-blue">Seattle, WA</span>
+      <span class="badge badge-yellow">May 16, 2026 · 7–10 PM</span>
+      <span class="badge badge-pink">Benefit for Movement Voter Project</span>
+    </div>
+
+    <div class="title-main">Dance</div>
+    <div class="title-main">For</div>
+    <div class="title-sub">Democracy</div>
+
+    <p class="font-bebas text-xl md:text-2xl mt-4 mb-2 tracking-wide text-white/90" style="text-shadow: 1px 1px 0 rgba(0,0,0,0.4);">Help fund grassroots organizing in swing states to win in 2026</p>
+
+    <p class="font-mono text-sm mt-6 mb-8 text-white/70 tracking-wider">
+      PRESENTED BY MOVEMENT VOTER PROJECT–WASHINGTON HUB
+    </p>
+
+    <div class="flex flex-wrap gap-4 justify-center">
+      <a href="#donate" class="btn-register" style="display:inline-block;font-family:'Bebas Neue',sans-serif;font-size:1.4rem;letter-spacing:0.1em;padding:1rem 2.5rem;border-radius:8px;background:var(--hot-pink);color:#fff;text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;box-shadow:0 0 20px rgba(255,63,164,0.5),4px 4px 0 rgba(0,0,0,0.4);width:100%;text-align:center;max-width:480px;">Register to Dance &amp; Fundraise for MVP</a>
+    </div>
+    <div class="flex flex-wrap gap-4 justify-center mt-4">
+      <a href="https://secure.actblue.com/donate/dancefordemocracy2026" target="_blank" rel="noopener" class="btn-primary">Donate</a>
+      <a href="https://movement.vote/" target="_blank" rel="noopener" class="btn-secondary">Learn More About MVP</a>
+    </div>
+
+
+  </div>
+</section>
+
+<div style="width:100%;overflow:hidden;height:160px;background:transparent;">
+  <svg width="100%" height="160" viewBox="0 0 1200 180" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg" fill="#E8006F" opacity="0.85">
+      <g transform="translate(30,10)">
+        <ellipse cx="30" cy="22" rx="14" ry="18"/>
+        <rect x="16" y="38" width="28" height="55" rx="8"/>
+        <rect x="4" y="55" width="20" height="12" rx="6" transform="rotate(-30 14 61)"/>
+        <rect x="22" y="0" width="18" height="22" rx="6"/>
+      </g>
+      <g transform="translate(100,5)">
+        <circle cx="35" cy="18" r="16"/>
+        <rect x="22" y="34" width="26" height="60" rx="10"/>
+        <rect x="0" y="20" width="22" height="10" rx="5" transform="rotate(-45 11 25)"/>
+        <rect x="48" y="20" width="22" height="10" rx="5" transform="rotate(45 59 25)"/>
+        <rect x="18" y="90" width="14" height="50" rx="7" transform="rotate(-10 25 115)"/>
+        <rect x="36" y="90" width="14" height="50" rx="7" transform="rotate(10 43 115)"/>
+      </g>
+      <g transform="translate(220,15)">
+        <circle cx="30" cy="18" r="15"/>
+        <rect x="18" y="33" width="24" height="55" rx="9" transform="rotate(8 30 60)"/>
+        <rect x="42" y="30" width="20" height="9" rx="4.5" transform="rotate(55 52 34)"/>
+        <rect x="2" y="38" width="20" height="9" rx="4.5" transform="rotate(-20 12 42)"/>
+        <rect x="14" y="83" width="13" height="48" rx="6.5" transform="rotate(-12 20 107)"/>
+        <rect x="32" y="83" width="13" height="48" rx="6.5" transform="rotate(20 38 107)"/>
+      </g>
+      <g transform="translate(340,8)">
+        <circle cx="34" cy="17" r="16"/>
+        <rect x="21" y="33" width="26" height="58" rx="10"/>
+        <rect x="-12" y="30" width="34" height="10" rx="5" transform="rotate(-15 5 35)"/>
+        <rect x="47" y="30" width="34" height="10" rx="5" transform="rotate(15 64 35)"/>
+        <rect x="17" y="87" width="14" height="52" rx="7" transform="rotate(-15 24 113)"/>
+        <rect x="35" y="87" width="14" height="52" rx="7" transform="rotate(15 42 113)"/>
+      </g>
+      <g transform="translate(490,5)">
+        <circle cx="28" cy="18" r="15"/>
+        <rect x="16" y="33" width="24" height="58" rx="9"/>
+        <rect x="40" y="0" width="44" height="34" rx="4"/>
+        <rect x="62" y="34" width="5" height="55" rx="2.5"/>
+        <rect x="0" y="42" width="18" height="10" rx="5" transform="rotate(-25 9 47)"/>
+        <rect x="16" y="87" width="13" height="48" rx="6.5" transform="rotate(-8 22 111)"/>
+        <rect x="32" y="87" width="13" height="48" rx="6.5" transform="rotate(8 38 111)"/>
+      </g>
+      <g transform="translate(640,0)">
+        <circle cx="32" cy="14" r="15"/>
+        <rect x="20" y="29" width="24" height="52" rx="9"/>
+        <rect x="-5" y="18" width="26" height="10" rx="5" transform="rotate(-50 8 23)"/>
+        <rect x="49" y="18" width="26" height="10" rx="5" transform="rotate(50 62 23)"/>
+        <rect x="14" y="77" width="13" height="46" rx="6.5" transform="rotate(-25 20 100)"/>
+        <rect x="33" y="77" width="13" height="46" rx="6.5" transform="rotate(30 39 100)"/>
+      </g>
+      <g transform="translate(780,10)">
+        <circle cx="30" cy="18" r="14"/>
+        <rect x="19" y="32" width="22" height="54" rx="9"/>
+        <rect x="2" y="15" width="18" height="9" rx="4.5" transform="rotate(-60 11 19)"/>
+        <rect x="41" y="15" width="18" height="9" rx="4.5" transform="rotate(60 50 19)"/>
+        <rect x="15" y="82" width="12" height="45" rx="6" transform="rotate(-10 21 104)"/>
+        <rect x="31" y="82" width="12" height="45" rx="6" transform="rotate(10 37 104)"/>
+      </g>
+      <g transform="translate(920,20)">
+        <ellipse cx="28" cy="20" rx="13" ry="17"/>
+        <rect x="15" y="35" width="26" height="50" rx="8"/>
+        <rect x="38" y="42" width="20" height="11" rx="5.5" transform="rotate(25 48 47)"/>
+        <rect x="20" y="0" width="17" height="21" rx="5.5"/>
+      </g>
+      <g transform="translate(1030,8)">
+        <circle cx="33" cy="17" r="15"/>
+        <rect x="21" y="32" width="24" height="55" rx="9"/>
+        <rect x="-8" y="28" width="30" height="9" rx="4.5" transform="rotate(-20 7 32)"/>
+        <rect x="53" y="22" width="22" height="9" rx="4.5" transform="rotate(55 64 26)"/>
+        <rect x="17" y="83" width="13" height="48" rx="6.5" transform="rotate(-15 23 107)"/>
+        <rect x="34" y="83" width="13" height="48" rx="6.5" transform="rotate(12 40 107)"/>
+      </g>
+      <g transform="translate(1130,12)">
+        <circle cx="28" cy="17" r="14"/>
+        <rect x="17" y="31" width="22" height="52" rx="8"/>
+        <rect x="1" y="38" width="17" height="9" rx="4.5" transform="rotate(-35 9 42)"/>
+        <rect x="39" y="28" width="18" height="9" rx="4.5" transform="rotate(60 48 32)"/>
+        <rect x="13" y="79" width="12" height="46" rx="6" transform="rotate(-10 19 102)"/>
+        <rect x="29" y="79" width="12" height="46" rx="6" transform="rotate(15 35 102)"/>
+      </g>
+    </svg>
+</div>
+
+<!-- Marquee ticker -->
+<div class="overflow-hidden py-2" style="background: var(--magenta);">
+  <div class="marquee-track font-bebas text-white text-lg tracking-widest">
+    <span>♪ DANCE FOR DEMOCRACY</span><span>★ MAY 16 · SEATTLE</span>
+    <span>♪ JYOTI B. FLY · KEXP WO'POP</span><span>★ MAGNUSON PARK</span>
+    <span>♪ BENEFIT FOR MOVEMENT VOTER PROJECT</span><span>★ TAKE BACK THE HOUSE & SENATE</span>
+    <span>♪ DANCE FOR DEMOCRACY</span><span>★ MAY 16 · SEATTLE</span>
+    <span>♪ JYOTI B. FLY · KEXP WO'POP</span><span>★ MAGNUSON PARK</span>
+    <span>♪ BENEFIT FOR MOVEMENT VOTER PROJECT</span><span>★ TAKE BACK THE HOUSE & SENATE</span>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="relative py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal">
+      <p class="font-mono text-xs tracking-widest uppercase mb-3" style="color:var(--green-light)">What's This All About</p>
+      <h2 class="font-bebas text-5xl md:text-7xl text-white leading-none mb-10">
+        Dance.<br/>Resist.<br/><span style="color:var(--green-light)">Win.</span>
+      </h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 reveal">
+      <div class="card p-8">
+        <div class="text-3xl mb-4">✊</div>
+        <h3 class="font-bebas text-2xl text-[var(--yellow)] mb-3 tracking-wide">The Mission</h3>
+        <p class="text-white/75 leading-relaxed">
+          On May 16th, a group of feisty, fun-loving resisters from Seattle, Olympia, and greater Western Washington are hosting a Dance for Democracy to benefit <strong class="text-white">Movement Voter Project (MVP)</strong>. We're raising early money so grassroots groups in key states can organize now — building the voter power needed to flip the House and Senate in November 2026. In 2022, Democrats lost the House by just 6,675 votes across five districts. In 2024, by just 7,309 votes across three. This time, we organize early — and we win.
+        </p>
+      </div>
+      <div class="card p-8">
+        <div class="text-3xl mb-4">🌱</div>
+        <h3 class="font-bebas text-2xl mb-3 tracking-wide" style="color:var(--blue-light)">Movement Voter Project</h3>
+        <p class="text-white/75 leading-relaxed">
+          MVP operates like a "mutual fund" for political giving — raising money from donors and channeling it to the most impactful grassroots groups around the country. Unlike candidate campaigns that parachute in at the last minute and vanish after Election Day, MVP invests in community organizers who work year-round. Research shows that trusted local messengers move voters more reliably than ads, cold calls, or mailers. In 2020, MVP partners helped beat Trump by just 43,000 votes across Arizona, Georgia, and Wisconsin — then delivered the Georgia Senate runoffs. Their partners are organizing right now to block MAGA bills and build toward a Blue Wave in November.
+        </p>
+      </div>
+      <div class="card p-8 md:col-span-2">
+        <div class="text-3xl mb-4">🎯</div>
+        <h3 class="font-bebas text-2xl text-[var(--yellow)] mb-3 tracking-wide">Our Goal</h3>
+        <p class="text-white/80 leading-relaxed max-w-2xl">
+          We are actively recruiting people to fundraise for MVP's midterm efforts — and to <em>have fun</em> while doing it. Our goal is to raise at least <strong class="text-white text-xl">$100,000</strong> for MVP leading up to this event. Then we'll celebrate our collective efforts with an incredible dance party in Seattle!
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ DJ ============ -->
+<section class="py-24 px-6 section-dark">
+  <div class="max-w-4xl mx-auto text-center reveal">
+    <p class="font-mono text-xs tracking-widest uppercase mb-6" style="color:var(--blue-light)">Your DJ for the Night</p>
+    <div class="flex justify-center mb-8">
+      <div class="dj-ring">🎧</div>
+    </div>
+    <h2 class="font-bebas text-6xl md:text-8xl text-white" style="text-shadow: 3px 3px 0 rgba(0,0,0,0.4);">Jyoti B. Fly</h2>
+    <p class="font-mono text-sm tracking-widest mt-2 uppercase" style="color:var(--yellow)">KEXP's Wo'Pop</p>
+    <p class="mt-6 text-white/70 max-w-xl mx-auto leading-relaxed">
+      Get ready to move. Jyoti B. Fly brings the global sounds of KEXP's beloved Wo'Pop to Magnuson Park for a night of resistance, rhythm, and revelry.
+    </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ EVENT DETAILS ============ -->
+<section class="py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-10">
+      <p class="font-mono text-xs tracking-widest text-[var(--yellow)] uppercase mb-3">Event Details</p>
+      <h2 class="font-bebas text-5xl md:text-7xl text-white leading-none">
+        The <span style="color:var(--yellow)">Party</span>
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
+      <!-- Date & Time -->
+      <div class="card p-7">
+        <div class="font-mono text-xs text-white/40 uppercase tracking-widest mb-3">📅 Date & Time</div>
+        <div class="font-bebas text-3xl text-[var(--yellow)]">May 16, 2026</div>
+        <div class="font-bebas text-2xl text-white/90">7:00 – 10:00 PM</div>
+      </div>
+
+      <!-- Venue -->
+      <div class="card p-7 sm:col-span-2">
+        <div class="font-mono text-xs text-white/40 uppercase tracking-widest mb-3">📍 Venue</div>
+        <div class="font-bebas text-2xl mb-1" style="color:var(--blue-light)">Magnuson Officer's Club</div>
+        <div class="text-white/70 leading-relaxed text-sm mb-4">
+          7448 63rd Ave NE<br />
+          Building 30, Magnuson Park<br />
+          Seattle, WA 98115
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://maps.app.goo.gl/Lrohsfi6ZiE67kBt6" target="_blank" rel="noopener" class="map-link font-mono text-xs tracking-wide">
+            📍 Google Maps ↗
+          </a>
+          <span class="text-white/20">·</span>
+          <a href="https://maps.apple/p/6Q_kcFvaCbi5IH" target="_blank" rel="noopener" class="map-link font-mono text-xs tracking-wide">
+            🗺 Apple Maps ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Hosted by -->
+      <div class="card p-7 sm:col-span-2 lg:col-span-3">
+        <div class="font-mono text-xs text-white/40 uppercase tracking-widest mb-3">🏛 Hosted By</div>
+        <div class="font-bebas text-2xl text-[var(--green-light)]">MVP–Washington Hub</div>
+        <p class="text-white/60 text-sm mt-2">
+          A network of feisty, fun-loving resisters from Seattle, Olympia, and the greater Western Washington area — united behind grassroots power.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ DONATE CTA ============ -->
+<section id="donate" class="py-28 px-6 text-center relative overflow-hidden section-dark">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 50% 50%,rgba(232,0,111,0.15) 0%,transparent 70%);"></div>
+  <div class="relative z-10 reveal">
+    <p class="font-mono text-xs tracking-widest text-[var(--yellow)] uppercase mb-4">Our Goal</p>
+    <h2 class="font-bebas text-6xl md:text-9xl text-white leading-none mb-2">
+      Raise at least<br/><span style="color:var(--yellow);">$100K</span>
+    </h2>
+    <p class="font-bebas text-2xl md:text-3xl text-white/80 mb-8 tracking-wide">for the 2026 midterms and beyond</p>
+    <p class="text-white/60 max-w-xl mx-auto mb-10 leading-relaxed">
+      Your donation goes directly to MVP's grassroots network — hundreds of local groups fighting for fair elections, workers' rights, and human dignity in 2026 and beyond.
+    </p>
+    <div class="flex flex-wrap justify-center gap-5">
+      <a href="https://secure.actblue.com/donate/dancefordemocracy2026" target="_blank" rel="noopener" class="btn-primary">
+        Donate ↗
+      </a>
+      <a href="https://movement.vote/" target="_blank" rel="noopener" class="btn-secondary">
+        Learn More About MVP ↗
+      </a>
+    </div>
+    <p class="font-mono text-xs text-white/30 mt-8 tracking-wider">
+      MOVEMENT VOTER PROJECT · 501(c)(4) · MOVEMENTVOTERPROJECT.ORG
+    </p>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-24 px-6">
+  <div class="max-w-3xl mx-auto">
+    <div class="reveal mb-10">
+      <p class="font-mono text-xs tracking-widest uppercase mb-3" style="color:var(--green-light)">Got Questions?</p>
+      <h2 class="font-bebas text-5xl md:text-7xl text-white leading-none">
+        FAQ<span style="color:var(--green-light)">s</span>
+      </h2>
+      <p class="text-white/50 font-mono text-xs mt-2 tracking-wide">
+        Content sourced from the <a href="https://docs.google.com/document/d/e/2PACX-1vT4nRyYNAdQ6bFn0sVAtX8jb-2w6cRYQFAbCJZ-igZldTb8Dut5K5eykpDpmqfl30O8KzJ0m0bY_66c/pub" target="_blank" rel="noopener" style="color:var(--blue-light);border-bottom:1px solid rgba(91,184,255,0.4);">official FAQ doc</a>
+      </p>
+    </div>
+    <div class="reveal">
+
+      <div class="mb-8">
+        <h3 class="font-bebas text-xl tracking-widest mb-4" style="color:var(--hot-pink)">General Questions</h3>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">1. When and where is the 2026 Dance for Democracy?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>MVP's 2026 Dance for Democracy in Seattle is on <strong class="text-white">May 16th</strong> at the <strong class="text-white">Magnuson Officer's Club</strong> from 7–10 pm.</p>
+            <p class="mt-3">7448 63rd Ave NE<br/>Building 30, Magnuson Park<br/>Seattle, WA 98115</p>
+            <p class="mt-3 flex flex-wrap gap-4">
+              <a href="https://maps.app.goo.gl/Lrohsfi6ZiE67kBt6" target="_blank" rel="noopener" class="map-link">📍 Google Maps ↗</a>
+              <a href="https://maps.apple/p/6Q_kcFvaCbi5IH" target="_blank" rel="noopener" class="map-link">🗺 Apple Maps ↗</a>
+            </p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">2. What if dancing isn't my jam or I'm busy on May 16?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>That's okay! There are still several ways you can support MVP and our work to protect democracy. You can set a fundraising goal for yourself and have your family and friends sponsor you with a donation. Just fill out the registration form and you'll receive all the materials you need to participate.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">3. Can I bring a Plus One to the dance?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>Yes! Please have each person who is planning to attend fill out the registration form so we can keep a count of attendees.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <h3 class="font-bebas text-xl tracking-widest mb-4" style="color:var(--hot-pink)">Questions About the ActBlue Page &amp; Donation Reporting</h3>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">4. When I click my fundraising link, ActBlue opens with my credit card info.</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>Don't worry — your credit card info is appearing only because your computer or phone has already stored your ActBlue payment information. Your credit card information is not attached in any way to the fundraising link we sent you. Each person who donates will enter their own payment information into ActBlue.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">5. Why does the thermometer show so much money raised?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>All dancers' fundraising links go to the same ActBlue page. This approach is much simpler for our team to manage than setting up a separate page for each dancer.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">6. How will my sponsors know they are donating to me?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>The donation page asks sponsors to enter the name of the dancer they are sponsoring. Please request that sponsors enter your first and last name so that we can accurately track your donations.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">7. How will I know if my sponsors are donating?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>We'll send you a weekly email with a list of sponsors that have donated for you. We recommend that you thank your sponsors as they make donations, and also send a weekly reminder to people who haven't gotten around to donating yet.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <h3 class="font-bebas text-xl tracking-widest mb-4" style="color:var(--hot-pink)">Questions About the Sponsorship Letter &amp; Sending Requests</h3>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">8. Where is my personal fundraising link?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>You received your fundraising link in an email with the subject line: <em>"Welcome to Seattle's Dance for Democracy 2026!"</em></p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">9. How do I send the letter to my friends, family, and community?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>Open the sponsorship letter template and personalize it with your reasons for fundraising. After you've finalized the text, copy and paste it into the body of an email. Add the email addresses for your intended recipients, make any additional customizations, double-check that the links work (important!), and send it.</p>
+            <p class="mt-2">If you need help, reach out to your dance coach or email <a href="mailto:washingtoniansformvp@gmail.com" style="color:var(--blue-light);border-bottom:1px solid rgba(91,184,255,0.4);">washingtoniansformvp@gmail.com</a>.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">10. What does my fundraising link look like?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>Your fundraising link will look similar to: <code class="text-white/90 bg-white/10 px-1 py-0.5 rounded text-xs">https://secure.actblue.com/donate/wa_dance?refcode=202640516420_XX</code> — where the last two letters are the initials of the dance coach who sent you the event details.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-7 text-center">
+        <p class="font-bebas text-xl tracking-wide mb-2" style="color:var(--yellow)">More Questions?</p>
+        <p class="text-white/70 text-sm">Send all questions to <a href="mailto:washingtoniansformvp@gmail.com" style="color:var(--blue-light);border-bottom:1px solid rgba(91,184,255,0.4);">washingtoniansformvp@gmail.com</a></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ FOOTER ============ -->
+<footer class="py-10 px-6 text-center">
+  <div class="max-w-4xl mx-auto">
+    <div class="font-bebas text-3xl mb-2" style="color:var(--yellow)">Dance for Democracy</div>
+    <p class="font-mono text-xs text-white/30 tracking-widest mb-6">
+      MAY 16, 2026 · MAGNUSON PARK, SEATTLE · PRESENTED BY MVP–WA HUB
+    </p>
+    <div class="divider mb-6"></div>
+    <p class="text-white/25 text-xs font-mono">
+      Paid for and organized by MVP–Washington Hub supporters. Not an official communication of Movement Voter Project.
+    </p>
+  </div>
+</footer>
+
+<script>
+
+
+  // ——— FAQ Accordion ———
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const icon = btn.querySelector('.faq-icon');
+    const isOpen = !answer.classList.contains('hidden');
+    answer.classList.toggle('hidden', isOpen);
+    icon.textContent = isOpen ? '+' : '−';
+    btn.closest('.card').style.borderColor = isOpen ? '' : 'rgba(91,184,255,0.4)';
+  }
+
+  // ——— Scroll Reveal ———
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+</script>
+</body>
+</html>
