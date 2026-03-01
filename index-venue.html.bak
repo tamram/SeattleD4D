@@ -384,6 +384,7 @@
   <div class="nav-links">
     <a href="#about" class="nav-link">Mission</a>
     <a href="#dj" class="nav-link">DJ</a>
+    <a href="#details" class="nav-link">Event Details</a>
     <a href="#donate" class="nav-link">Donate</a>
   </div>
 </nav>
@@ -564,10 +565,10 @@
 <div class="overflow-hidden py-2" style="background: var(--magenta);">
   <div class="marquee-track font-bebas text-white text-lg tracking-widest">
     <span>♪ DANCE FOR DEMOCRACY</span><span>★ MAY 16 · SEATTLE</span>
-    <span>♪ JYOTI B. FLY</span>
+    <span>♪ JYOTI B. FLY · KEXP WO'POP</span><span>★ MAGNUSON PARK</span>
     <span>♪ BENEFIT FOR MOVEMENT VOTER PROJECT</span><span>★ TAKE BACK THE HOUSE & SENATE</span>
     <span>♪ DANCE FOR DEMOCRACY</span><span>★ MAY 16 · SEATTLE</span>
-    <span>♪ JYOTI B. FLY</span>
+    <span>♪ JYOTI B. FLY · KEXP WO'POP</span><span>★ MAGNUSON PARK</span>
     <span>♪ BENEFIT FOR MOVEMENT VOTER PROJECT</span><span>★ TAKE BACK THE HOUSE & SENATE</span>
   </div>
 </div>
@@ -619,10 +620,62 @@
       <div class="dj-ring">🎧</div>
     </div>
     <h2 class="font-bebas text-6xl md:text-8xl text-white" style="text-shadow: 3px 3px 0 rgba(0,0,0,0.4);">Jyoti B. Fly</h2>
-
+    <p class="font-mono text-sm tracking-widest mt-2 uppercase" style="color:var(--yellow)">KEXP's Wo'Pop</p>
     <p class="mt-6 text-white/70 max-w-xl mx-auto leading-relaxed">
-      Get ready to move. Jyoti B. Fly brings global sounds to Seattle for a night of resistance, rhythm, and revelry.
+      Get ready to move. Jyoti B. Fly brings the global sounds of KEXP's beloved Wo'Pop to Magnuson Park for a night of resistance, rhythm, and revelry.
     </p>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ============ EVENT DETAILS ============ -->
+<section id="details" class="py-24 px-6">
+  <div class="max-w-5xl mx-auto">
+    <div class="reveal mb-10">
+      <p class="font-mono text-xs tracking-widest text-[var(--yellow)] uppercase mb-3">Event Details</p>
+      <h2 class="font-bebas text-5xl md:text-7xl text-white leading-none">
+        The <span style="color:var(--yellow)">Party</span>
+      </h2>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 reveal">
+      <!-- Date & Time -->
+      <div class="card p-7">
+        <div class="font-mono text-xs text-white/40 uppercase tracking-widest mb-3">📅 Date & Time</div>
+        <div class="font-bebas text-3xl text-[var(--yellow)]">May 16, 2026</div>
+        <div class="font-bebas text-2xl text-white/90">7:00 – 10:00 PM</div>
+      </div>
+
+      <!-- Venue -->
+      <div class="card p-7 sm:col-span-2">
+        <div class="font-mono text-xs text-white/40 uppercase tracking-widest mb-3">📍 Venue</div>
+        <div class="font-bebas text-2xl mb-1" style="color:var(--blue-light)">Magnuson Officer's Club</div>
+        <div class="text-white/70 leading-relaxed text-sm mb-4">
+          7448 63rd Ave NE<br />
+          Building 30, Magnuson Park<br />
+          Seattle, WA 98115
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="https://maps.app.goo.gl/Lrohsfi6ZiE67kBt6" target="_blank" rel="noopener" class="map-link font-mono text-xs tracking-wide">
+            📍 Google Maps ↗
+          </a>
+          <span class="text-white/20">·</span>
+          <a href="https://maps.apple/p/6Q_kcFvaCbi5IH" target="_blank" rel="noopener" class="map-link font-mono text-xs tracking-wide">
+            🗺 Apple Maps ↗
+          </a>
+        </div>
+      </div>
+
+      <!-- Hosted by -->
+      <div class="card p-7 sm:col-span-2 lg:col-span-3">
+        <div class="font-mono text-xs text-white/40 uppercase tracking-widest mb-3">🏛 Hosted By</div>
+        <div class="font-bebas text-2xl text-[var(--green-light)]">MVP–Washington Hub</div>
+        <p class="text-white/60 text-sm mt-2">
+          A network of committed democracy advocates from Washington — united behind grassroots power.
+        </p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -660,7 +713,7 @@
   <div class="max-w-4xl mx-auto">
     <div class="font-bebas text-3xl mb-2" style="color:var(--yellow)">Dance for Democracy</div>
     <p class="font-mono text-xs text-white/30 tracking-widest mb-6">
-      MAY 16, 2026 · SEATTLE · PRESENTED BY MVP–WA HUB
+      MAY 16, 2026 · MAGNUSON PARK, SEATTLE · PRESENTED BY MVP–WA HUB
     </p>
     <div class="divider mb-6"></div>
     <p class="text-white/25 text-xs font-mono">
