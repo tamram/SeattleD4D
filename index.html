@@ -70,6 +70,23 @@
       transition: color 0.2s;
     }
     .nav-link:hover { color: white; }
+    .nav-link-faq {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--green-light);
+      border: 1px solid var(--green);
+      background: rgba(0,196,106,0.12);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .nav-link-faq:hover {
+      background: rgba(0,196,106,0.25);
+      box-shadow: 0 0 12px rgba(0,196,106,0.4);
+    }
 
     .badge-green { color: var(--green-light); border-color: var(--green); background: rgba(0,196,106,0.12); }
     body::before {
@@ -387,6 +404,7 @@
     <a href="#about" class="nav-link">Mission</a>
     <a href="#dj" class="nav-link">DJ</a>
     <a href="#donate" class="nav-link">Donate</a>
+    <a href="#faq" class="nav-link-faq">❓ FAQs</a>
   </div>
 </nav>
 
@@ -581,9 +599,12 @@
   <div class="max-w-5xl mx-auto">
     <div class="reveal">
       <p class="font-mono text-xs tracking-widest uppercase mb-3" style="color:var(--green-light)">What's It All About</p>
-      <h2 class="font-bebas text-5xl md:text-7xl text-white leading-none mb-10">
-        Dance.<br/>Resist.<br/><span style="color:var(--green-light)">Win.</span>
+      <h2 class="font-bebas text-5xl md:text-7xl text-white leading-none mb-4">
+        Fundraising is activism.
       </h2>
+      <p class="font-bebas text-2xl md:text-3xl mb-10 tracking-wide" style="color:var(--green-light)">
+        MVP makes your money matter more by supporting the grassroots groups who are organizing to win key elections.
+      </p>
     </div>
 
     <div class="grid md:grid-cols-2 gap-6 reveal">
@@ -591,20 +612,17 @@
         <div class="text-3xl mb-4">✊</div>
         <h3 class="font-bebas text-2xl text-[var(--yellow)] mb-3 tracking-wide">The Mission</h3>
         <p class="text-white/75 leading-relaxed">
-          On Saturday, May 16, 2026, a group of passionate, fun-loving democracy advocates from Seattle, Olympia, and greater Western Washington will come together for a Dance for Democracy — a fundraiser dance-a-thon benefiting <strong class="text-white">Movement Voter PAC</strong> and its grassroots partners.
-        </p>
-        <p class="text-white/75 leading-relaxed mt-4">
-          We're raising early money so grassroots groups in key states can organize now — building the voter power needed to flip the House and Senate in November 2026.
+          We're dancing to raise early money so that grassroots groups in key states can organize now — building the voter power needed to flip the House and Senate in November 2026.
         </p>
       </div>
       <div class="card p-8">
         <div class="text-3xl mb-4">🌱</div>
         <h3 class="font-bebas text-2xl mb-3 tracking-wide" style="color:var(--blue-light)">Movement Voter PAC</h3>
         <p class="text-white/75 leading-relaxed">
-          MVP invests in local, community-based organizations led by voting rights activists working in their own neighborhoods. These groups are experts at mobilizing voters who can tip the closest races in pivotal swing states — Pennsylvania, Wisconsin, Michigan, North Carolina, Arizona, and Georgia.
+          Movement Voter Project funds local organizing and movement-building groups working to shift culture, win power, and shape policy.
         </p>
         <p class="text-white/75 leading-relaxed mt-4">
-          Want to learn more? <a href="https://movement.vote/about/" target="_blank" rel="noopener" style="color:var(--blue-light);border-bottom:1px solid rgba(91,184,255,0.4);">Watch this 2-minute video</a> — it says it all.
+          <a href="https://movement.vote/about/" target="_blank" rel="noopener" style="color:var(--blue-light);border-bottom:1px solid rgba(91,184,255,0.4);">Watch this 2-minute video</a> to learn more about MVP.
         </p>
       </div>
     </div>
@@ -670,6 +688,142 @@
 </section>
 
 
+<div class="divider"></div>
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-24 px-6">
+  <div class="max-w-3xl mx-auto">
+    <div class="reveal mb-10">
+      <p class="font-mono text-xs tracking-widest uppercase mb-3" style="color:var(--green-light)">Got Questions?</p>
+      <h2 class="font-bebas text-5xl md:text-7xl text-white leading-none">
+        FAQs
+      </h2>
+    </div>
+    <div class="reveal">
+
+      <div class="mb-8">
+        <h3 class="font-bebas text-xl tracking-widest mb-4" style="color:var(--hot-pink)">General Questions</h3>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">1. I want to participate, but what if dancing isn't my thing, or I'm busy on May 16?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>No problem! You can still make a real impact. Set a personal fundraising goal, then invite friends, family, and colleagues to sponsor you with a donation. Fill out the registration form and you'll receive everything you need to get started.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">2. Why do I have a dance coach and what do they do?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>Think of your dance coach as your personal hype person and accountability partner! They'll check in regularly to see how your fundraising is going, answer any questions you have, offer strategic advice when you're stuck, and give you that friendly nudge to help you cross the finish line. Don't be shy — lean on them! They're here to make sure you succeed and have fun doing it.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">3. Can I bring a plus-one to the dance?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>We ask that all dance attendees fundraise for MVP, with the goal of each person raising or donating at least $500. Each person needs to fill out the registration form to attend the event.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <h3 class="font-bebas text-xl tracking-widest mb-4" style="color:var(--hot-pink)">Questions About the ActBlue Page &amp; Donation Reporting</h3>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">4. When I click on my fundraising link, ActBlue shows my credit card info. Is that a problem?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>Not at all! Your saved payment information is appearing because your browser or phone has stored your ActBlue details. It is not attached to your fundraising link in any way. Each donor will enter their own payment information when they give.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">5. Why does the thermometer show so much money raised? Why doesn't it just show my sponsors' donations?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>All dancers share the same ActBlue page, which is much simpler for our team to manage than maintaining a separate page for each dancer. The thermometer reflects total donations across all participants.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">6. How will my sponsors know they're donating to me specifically?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>Your personal fundraising link includes your name for tracking purposes, so that we can report back on the donations that your sponsors have made.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">7. How will I know when my sponsors have donated?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>We'll send you a regular email with a list of everyone who has donated on your behalf. We recommend thanking each sponsor personally as donations come in, and sending a friendly reminder to anyone who hasn't donated yet.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-8">
+        <h3 class="font-bebas text-xl tracking-widest mb-4" style="color:var(--hot-pink)">Questions About the Sponsorship Letter &amp; Sending Requests</h3>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">8. Where is my personal fundraising link?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>Your fundraising link was included in your welcome email with the subject line: <em>"You're in! Here's everything you need to Dance for Democracy"</em>.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">9. How do I send the sponsorship letter to my friends, family, and community?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>Open the email and social media templates attached to your welcome email and personalize them as you desire with your own reasons for participating. When you're ready, copy and paste the text into a new email or social media post and double-check that all links work. Need help? Reach out to your dance coach.</p>
+          </div>
+        </div>
+
+        <div class="card mb-3 overflow-hidden">
+          <button class="faq-toggle w-full text-left p-6 flex justify-between items-start gap-4" onclick="toggleFaq(this)">
+            <span class="font-bebas text-lg tracking-wide text-white leading-snug">10. What does my fundraising link look like?</span>
+            <span class="faq-icon text-xl flex-shrink-0 mt-0.5" style="color:var(--yellow)">+</span>
+          </button>
+          <div class="faq-answer px-6 pb-6 hidden text-white/75 leading-relaxed text-sm">
+            <p>Your link will look something like this:</p>
+            <p class="mt-2"><code class="text-white/90 bg-white/10 px-1 py-0.5 rounded text-xs">https://secure.actblue.com/donate/dancefordemocracy2026?refcode=wad4d2026_dc_robinindigo</code></p>
+            <p class="mt-2">where "dc" are your dance coach's initials and "robinindigo" is your name.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card p-7 text-center">
+        <p class="font-bebas text-xl tracking-wide mb-2" style="color:var(--yellow)">Have More Questions?</p>
+        <p class="text-white/70 text-sm">Reach out to your dance coach — we're happy to help!</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer class="py-10 px-6 text-center">
   <div class="max-w-4xl mx-auto">
@@ -687,6 +841,16 @@
 <script>
 
 
+
+  // ——— FAQ Accordion ———
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const icon = btn.querySelector('.faq-icon');
+    const isOpen = !answer.classList.contains('hidden');
+    answer.classList.toggle('hidden', isOpen);
+    icon.textContent = isOpen ? '+' : '−';
+    btn.closest('.card').style.borderColor = isOpen ? '' : 'rgba(91,184,255,0.4)';
+  }
 
   // ——— Scroll Reveal ———
   const observer = new IntersectionObserver(entries => {
